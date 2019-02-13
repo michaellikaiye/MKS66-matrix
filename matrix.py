@@ -12,7 +12,10 @@ import math
 #print the matrix such that it looks like
 #the template in the top comment
 def print_matrix( matrix ):
-    pass
+    for row in matrix:
+        for element in row:
+            print(element,end="")
+        print("")
 
 #turn the paramter matrix into an identity matrix
 #you may assume matrix is square
@@ -23,7 +26,6 @@ def ident( matrix ):
 #m1 * m2 -> m2
 def matrix_mult( m1, m2 ):
     pass
-
 
 
 
