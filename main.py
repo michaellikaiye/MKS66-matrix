@@ -20,6 +20,7 @@ for line in lines:
                  0, end[0] - 100, 500 - end[1], 0)
 draw_lines(art, screen, color)
 display(screen)
+save_extension(screen, 'img.png')
 f.close()
 
 """
