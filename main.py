@@ -3,7 +3,7 @@ from draw import *
 from matrix import *
 
 screen = new_screen()
-color = [ 0, 255, 0 ]
+color = [200, 200, 200]
 
 art = new_matrix()
 
@@ -14,9 +14,10 @@ for line in lines:
     for i in range(len(locs) - 1):
         words = locs[i].split(',')
         start = [int(x) for x in words]
-        words = locs[i+1].split(',')
+        words = locs[i + 1].split(',')
         end = [int(x) for x in words]
-        add_edge(art, start[0] - 100, 500 - start[1], 0, end[0] - 100, 500 - end[1], 0)
+        add_edge(art, start[0] - 100, 500 - start[1],
+                 0, end[0] - 100, 500 - end[1], 0)
 draw_lines(art, screen, color)
 display(screen)
 f.close()

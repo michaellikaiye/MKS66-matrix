@@ -9,18 +9,22 @@ z0  z1  ... zn
 """
 import math
 
-#print the matrix such that it looks like
-#the template in the top comment
-def print_matrix( matrix ):
+# print the matrix such that it looks like
+# the template in the top comment
+
+
+def print_matrix(matrix):
 
     for j in range(4):
         for point in matrix:
             print(point[j], end=" ")
         print("")
 
-#turn the paramter matrix into an identity matrix
-#you may assume matrix is square
-def ident( matrix ):
+# turn the paramter matrix into an identity matrix
+# you may assume matrix is square
+
+
+def ident(matrix):
     size = len(matrix)
     for i in range(size):
         for j in range(size):
@@ -29,11 +33,13 @@ def ident( matrix ):
             else:
                 matrix[i][j] = 0
 
-#multiply m1 by m2, modifying m2 to be the product
-#m1 * m2 -> m2
-def matrix_mult( m1, m2 ):
-    #m1 must be 4points by 4
-    #m2 bpoints by 4
+# multiply m1 by m2, modifying m2 to be the product
+# m1 * m2 -> m2
+
+
+def matrix_mult(m1, m2):
+    # m1 must be 4points by 4
+    # m2 bpoints by 4
     m1rows = []
     m2cols = []
     for j in range(4):
@@ -48,14 +54,16 @@ def matrix_mult( m1, m2 ):
         for j in range(cols):
             m2[j][i] = dot(m1rows[i], m2cols[j])
 
-def dot(row, col):
-    #same sized vectors
-    return sum([row[k]*col[k] for k in range(len(row))])
 
-def new_matrix(rows = 4, cols = 4):
+def dot(row, col):
+    # same sized vectors
+    return sum([row[k] * col[k] for k in range(len(row))])
+
+
+def new_matrix(rows=4, cols=4):
     m = []
-    for c in range( cols ):
-        m.append( [] )
-        for r in range( rows ):
-            m[c].append( 0 )
+    for c in range(cols):
+        m.append([])
+        for r in range(rows):
+            m[c].append(0)
     return m
