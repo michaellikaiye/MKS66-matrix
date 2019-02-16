@@ -12,9 +12,10 @@ import math
 #print the matrix such that it looks like
 #the template in the top comment
 def print_matrix( matrix ):
-    for row in matrix:
-        for element in row:
-            print(element,end=" ")
+
+    for j in range(4):
+        for point in matrix:
+            print(point[j], end=" ")
         print("")
 
 #turn the paramter matrix into an identity matrix
@@ -23,7 +24,7 @@ def ident( matrix ):
     size = len(matrix)
     for i in range(size):
         for j in range(size):
-            if i is j:
+            if i == j:
                 matrix[i][j] = 1
             else:
                 matrix[i][j] = 0
@@ -31,24 +32,25 @@ def ident( matrix ):
 #multiply m1 by m2, modifying m2 to be the product
 #m1 * m2 -> m2
 def matrix_mult( m1, m2 ):
-    #assuming m1 is square, 4x4
-    row = 4
-    col = m2[3].count(1)
-    temp = []
-    for i in range(row):
-        temp.append([])
-        for j in range(col):
-            temp.append(m2[i][j])
-            m2[i][j] = 0
-    
-    print_matrix(m2)
-    print(temp)
-    print("matrix")
-    for i in range(row):
-        for j in range(col):
-            for n in range(row):
-                m2[i][j] += m1[i][n] * temp[n][j]
-    
+    #m1 must be 4points by 4
+    #m2 bpoints by 4
+    m1rows = []
+    m2cols = []
+    for j in range(4):
+        row = [i[j] for i in m1]
+        m1rows.append(row)
+    for i in range(len(m2)):
+        col = m2[i][:]
+        m2cols.append(col)
+    rows = len(m1rows)
+    cols = len(m2cols)
+    for i in range(rows):
+        for j in range(cols):
+            m2[j][i] = dot(m1rows[i], m2cols[j])
+
+def dot(row, col):
+    #same sized vectors
+    return sum([row[k]*col[k] for k in range(len(row))])
 
 def new_matrix(rows = 4, cols = 4):
     m = []

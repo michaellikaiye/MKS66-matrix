@@ -3,29 +3,34 @@ from matrix import *
 
 
 def draw_lines( matrix, screen, color ):
-    pass
+    for i in range(int(len(matrix)/2)):
+        start = matrix[i * 2]
+        end = matrix[i * 2 + 1]
+        if start == end:
+            plot(screen, color, start[0], start[1])
+        else:
+            draw_line(start[0], start[1], end[0], end[1], screen, color)
 
 def add_edge( matrix, x0, y0, z0, x1, y1, z1 ):
-    add_helper(matrix, x0, y0, z0)
-    add_helper(matrix, x1, y1, z1)
+    add_one(matrix, x0, y0, z0)
+    add_one(matrix, x1, y1, z1)
     pass
 
 def add_point( matrix, x, y, z=0 ):
-    add_helper(matrix, x, y, z)
-    add_helper(matrix, x, y, z)
+    add_one(matrix, x, y, z)
+    add_one(matrix, x, y, z)
 
-def add_helper(matrix, x, y, z):
-    size = matrix[3].count(1)
-    l = len(matrix[3])
-    if size == l:
-     for rows in matrix:
-         rows.append(0)
-    matrix[0][size] = x
-    matrix[1][size] = y
-    matrix[2][size] = z
-    matrix[3][size] = 1
-
-
+def add_one(matrix, x, y, z):
+    point = [x, y, z, 1]
+    length = len(matrix)
+    points = 0
+    for i in range(length):
+        if matrix[i][3] > 0:
+            points = i + 1
+    if points == length:
+        matrix.append(point)
+    else:
+        matrix[points] = point
 
 def draw_line( x0, y0, x1, y1, screen, color ):
 
