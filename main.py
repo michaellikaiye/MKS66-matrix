@@ -23,7 +23,7 @@ display(screen)
 save_extension(screen, 'img.png')
 f.close()
 
-"""
+print("Testing MATRICES")
 print("Testing m2 = new_matrix(4,2)")
 m2 = new_matrix(4, 2)
 print_matrix(m2)
@@ -47,4 +47,4 @@ add_point(m2, 1, 2, 3)
 print_matrix(m2)
 draw_lines( m2, screen, color )
 display(screen)
-"""
+
