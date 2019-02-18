@@ -45,6 +45,4 @@ print_matrix(m2)
 print("Testing add point (1, 2, 3)")
 add_point(m2, 1, 2, 3)
 print_matrix(m2)
-draw_lines( m2, screen, color )
-display(screen)
 
